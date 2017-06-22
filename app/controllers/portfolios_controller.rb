@@ -2,7 +2,7 @@ require 'byebug'
 class PortfoliosController < ApplicationController
   before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
   layout 'portfolio'
-  access all: [:show, :index, :angular], user: {except: [:destroy, :new, :create, :update, :edit]}, site_admin: :all 
+  access all: [:show, :index, :angular], user: {except: [:sort, :destroy, :new, :create, :update, :edit]}, site_admin: :all 
 
   def index
     @portfolio_items = Portfolio.by_position
