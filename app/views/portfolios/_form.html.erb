@@ -1,32 +1,38 @@
 <%= form_for(@portfolio_item) do |form| %>
+<div class='row'>
+  <div class='col-md-6'>
+    <div class="form-group">
+      <%= form.label :title %>
+      <%= form.text_field :title, id: :blog_title, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :blog_title %>
+    <div class="form-group">
+      <%= form.label :subtitle %>
+      <%= form.text_field :subtitle, id: :blog_title, class: 'form-control' %>
+    </div>
+
   </div>
-
-  <div class="field">
-    <%= form.label :subtitle %>
-    <%= form.text_field :subtitle, id: :blog_title %>
-  </div>
-
-  <div class="field">
+  <div class='col-md-6'>
+    <div class="form-group">
     <%= form.label :body %>
-    <%= form.text_area :body, id: :blog_body %>
+    <%= form.text_area :body, id: :blog_body, class: 'form-control', rows:10 %>
+    </div>
   </div>
+  <div class='col-md-12'>
+    <h3> Technologies Used </h3>
+    <%= form.fields_for :technologies do |technology_form| %> 
+    <div class='form-group'>
+      <%= technology_form.label :name %>
+      <%= technology_form.text_field :name, class: 'form-control' %>
+    </div>
+    <% end %>
+  </div>
+</div>
 
-  <div>
-    <ul>
-      <%= form.fields_for :technologies do |technology_form| %> 
-      <li>
-          <%= technology_form.label :name %>
-          <%= technology_form.text_field :name %>
-      </li>
-      <% end %>
-    </ul>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+
+
+<div class="actions form-group">
+  <%= form.submit 'Save Portfolio Item', class: 'btn btn-primary btn-block' %>
+</div>
 <% end %>
