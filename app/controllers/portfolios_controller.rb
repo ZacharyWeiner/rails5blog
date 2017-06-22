@@ -1,3 +1,4 @@
+require 'byebug'
 class PortfoliosController < ApplicationController
   before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
   layout 'portfolio'
@@ -6,6 +7,14 @@ class PortfoliosController < ApplicationController
   def index
     @portfolio_items = Portfolio.by_position
   end
+
+  def sort 
+    params[:order].each do |key, value|
+      Portfolio.find(value[:id]).update(position: value[:position])
+    end
+
+    render nothing: true
+  end 
 
   def angular
     @portfolio_items = Portfolio.angular
