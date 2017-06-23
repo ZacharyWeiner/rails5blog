@@ -42,7 +42,7 @@ class PortfoliosController < ApplicationController
 
   def update
      respond_to do |format|
-      if @portfolio_item.update(params.require(:portfolio).permit(:title, :subtitle, :body))
+      if @portfolio_item.update(portfolio_params)
         format.html { redirect_to portfolios_path, notice: 'Item was successfully updated.' }
       else
         format.html { render :edit }
@@ -70,7 +70,8 @@ class PortfoliosController < ApplicationController
      params.require(:portfolio).permit(:title, 
         :subtitle, 
         :body,
-        :image, 
+        :image,
+        :thumb_image, 
         technologies_attributes: [:name]
         )
     end

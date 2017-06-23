@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+gem 'dotenv-rails', groups: [:development, :test]
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
 # Use sqlite3 as the database for Active Record
@@ -41,6 +41,10 @@ gem 'petergate', '~> 1.6', '>= 1.6.3'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'kaminari', '~> 1.0', '>= 1.0.1'
 gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+gem 'carrierwave', '~> 1.0'
+gem "mini_magick"
+gem 'carrierwave-aws'
+gem "fog-aws"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   
