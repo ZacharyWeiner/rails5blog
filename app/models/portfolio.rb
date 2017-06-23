@@ -7,6 +7,9 @@ class Portfolio < ApplicationRecord
 
   validates_presence_of :title, :body, :image, :thumb_image
 
+  mount_uploader :thumb_image, PortfolioUploader
+  mount_uploader :image, PortfolioUploader 
+
   def self.angular
     where(subtitle: "Angular")
   end
