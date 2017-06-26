@@ -1,2 +1,5 @@
 module BlogsHelper
+  def gravitar_helper user
+    image_tag "http://gravatar.com/avatar/#{Digest::MD5::hexdigest(user.email)}", width: 40
+  end 
 end
