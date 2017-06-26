@@ -12,7 +12,6 @@ class PortfoliosController < ApplicationController
     params[:order].each do |key, value|
       Portfolio.find(value[:id]).update(position: value[:position])
     end
-
     render nothing: true
   end 
 
@@ -22,7 +21,6 @@ class PortfoliosController < ApplicationController
 
   def new 
     @portfolio_item = Portfolio.new
-    3.times {@portfolio_item.technologies.build} 
   end
 
   def create 
@@ -72,7 +70,7 @@ class PortfoliosController < ApplicationController
         :body,
         :image,
         :thumb_image, 
-        technologies_attributes: [:name]
+        technologies_attributes: [:name, :id, :_destroy]
         )
     end
 end
