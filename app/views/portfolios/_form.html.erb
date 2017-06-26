@@ -1,4 +1,9 @@
 <%= form_for(@portfolio_item) do |form| %>
+<% if portfolio_item.errors.any? %>
+  <% portfolio_item.errors.full_messages.each do |error| %>
+     <%= js add_gritter(error, title: "Zack Weiners Awesomeness", sticky: false) %>
+  <% end %>
+<% end %>
 <div class='row'>
   <div class='col-md-6'>
     <div class="form-group">
@@ -33,7 +38,7 @@
     <h3> Technologies Used </h3>
     <div>
       <%= form.fields_for :technologies do |technology_form| %> 
-      <%= render 'technology_fields', f: technology_form %>
+        <%= render 'technology_fields', f: technology_form %>
       <% end %>
     </div>
     <div>
