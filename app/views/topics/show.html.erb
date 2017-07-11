@@ -1,9 +1,10 @@
-<p id="notice"><%= notice %></p>
+<div class="col-sm-8 blog-main">
+  <%= paginate @blogs %>
+  <%= render @blogs %>
+  
+  <%= paginate @blogs %>
+  <%= link_to 'Edit', edit_topic_path(@topic) %> |
+  <%= link_to 'Back', topics_path %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @topic.title %>
-</p>
-
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+  </div>
+  <br>

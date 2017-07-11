@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
-
+  layout 'blog'
   # GET /topics
   # GET /topics.json
   def index
@@ -10,6 +10,11 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
+    if logged_in?(:site_admin)
+      @blogs = @topic.blogs.recent.page(params[:page]).per(10)
+    else 
+      @blogs = @topic.blogs.published.recent.page(params[:page]).per(10)
+    end 
   end
 
   # GET /topics/new
