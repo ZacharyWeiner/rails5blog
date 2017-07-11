@@ -1,6 +1,7 @@
 <div class="col-sm-8 blog-main">
   
   <h2><%= @blog.title %></h2>
+  <span class="blog-topic"> <%= @blog.topic.title if @blog.topic %> </span> <br>
   <%= link_to 'Edit', edit_blog_path(@blog) %> | <%= link_to 'Back', blogs_path %>
   <p><%= @blog.body %></p>
 
