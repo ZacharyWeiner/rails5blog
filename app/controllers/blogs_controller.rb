@@ -12,10 +12,14 @@ class BlogsController < ApplicationController
   # GET /blogs/1
   # GET /blogs/1.json
   def show
-    @blog = Blog.includes(:comments).friendly.find(params[:id])
-    @comment = Comment.new
-    
-    @page_title = @blog.title
+    if logged_in?(:site_admin) || @blog.published? 
+      @blog = Blog.includes(:comments).friendly.find(params[:id])
+      @comment = Comment.new
+      
+      @page_title = @blog.title
+    else 
+      redirect_to blogs_path, notice: 'You do not have permission to access this post'
+    end 
   end
 
   # GET /blogs/new
